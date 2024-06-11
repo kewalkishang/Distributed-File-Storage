@@ -2,7 +2,7 @@ package p2p
 
 import "errors"
 
-var ErrInvalidHandshake = errors.New("Invalid Handshake")
+var ErrInvalidHandshake = errors.New("invalid Handshake")
 
 type HandshakeFunc func(any) error
 
