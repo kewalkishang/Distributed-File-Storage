@@ -109,14 +109,14 @@ func (s *Store) Write(id string, key string, r io.Reader) (int64, error) {
 	return s.writeStream(id, key, r)
 }
 
-// func (s *Store) WriteDecrypt(encKey []byte, id string, key string, r io.Reader) (int64, error) {
-// 	f, err := s.openFileForWriting(id, key)
-// 	if err != nil {
-// 		return 0, err
-// 	}
-// 	n, err := copyDecrypt(encKey, r, f)
-// 	return int64(n), err
-// }
+func (s *Store) WriteDecrypt(encKey []byte, id string, key string, r io.Reader) (int64, error) {
+	f, err := s.openFileForWriting(id, key)
+	if err != nil {
+		return 0, err
+	}
+	n, err := copyDecrypt(encKey, r, f)
+	return int64(n), err
+}
 
 func (s *Store) openFileForWriting(id string, key string) (*os.File, error) {
 	pathKey := s.PathTransformFunc(key)
